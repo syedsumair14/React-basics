@@ -19,7 +19,16 @@ class App extends React.Component {
        if(this.state.lat && !this.state.errorMessage){
            return <SeasonDisplay lat={this.state.lat}/>
        }
-       return <div>Error, Permission denied.</div>
+       if(!this.state.lat && this.state.errorMessage){
+            return (
+                <div className="ui active dimmer">
+                    <div className="ui indeterminate text loader">Error! Allow loaction information.</div>
+                </div>
+            )
+       }
+       return  <div className="ui active dimmer">
+                    <div className="ui indeterminate text loader">Allow us to collect data.</div>
+                </div>
     }
 }
 
